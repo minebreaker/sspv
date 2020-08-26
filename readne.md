@@ -1,0 +1,1 @@
+simple stupid picture viewer
