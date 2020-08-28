@@ -34,7 +34,7 @@ namespace sspv
             var app = (sspv.App)Application.Current;
 
             files = app.files
-                ?.Where(f => pictureExts.Any(ext => f.EndsWith(ext)))
+                ?.Where(f => pictureExts.Any(ext => f.ToLower().EndsWith(ext)))
                 ?.ToArray();
             target = app.target;
             if (target == null || files == null || files.Length == 0) { return; }
