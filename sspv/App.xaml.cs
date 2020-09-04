@@ -15,10 +15,13 @@ namespace sspv
         {
             if (e.Args.Length == 0) { return; }
             this.Target = e.Args[0];
+            // If the path is invalid, just stop doing anything
+            if (!File.Exists(this.Target) && !Directory.Exists(this.Target)) { return; }
+
             // FIXME: should handle the case when the path is wrong
-            var parentDirectory = IsDirectory(Target)
-                ? Target
-                : Directory.GetParent(Target).FullName;
+            var parentDirectory = IsDirectory(this.Target)
+                ? this.Target
+                : Directory.GetParent(this.Target).FullName;
 
             this.Files = Directory.GetFiles(parentDirectory);
         }

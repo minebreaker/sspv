@@ -38,6 +38,11 @@ namespace sspv
         private void Load()
         {
             var fileName = this.Files[this.Index];
+
+            // Show the file name on the title bar
+            this.Title = fileName;
+
+            // Read image. Fix rotation if necessary
             var image = new BitmapImage(new Uri(fileName));
             ImageSource rotatedImage = image;
             if (fileName.ToLower().EndsWith("jpg") || fileName.ToLower().EndsWith("jpeg"))
