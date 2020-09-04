@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace sspv
 
@@ -21,11 +12,11 @@ namespace sspv
     {
 
         // FIXME: This is dumb.
-        private string[] pictureExts = { "bmp", "jpg", "jpeg", "png", "gif" };
+        private readonly string[] PictureExts = { "bmp", "jpg", "jpeg", "png", "gif" };
 
-        private string[] files;
-        private string target;
-        private int index;
+        private string[] Files;
+        private string Target;
+        private int Index;
 
         public MainWindow()
         {
@@ -33,32 +24,32 @@ namespace sspv
 
             var app = (sspv.App)Application.Current;
 
-            files = app.files
-                ?.Where(f => pictureExts.Any(ext => f.ToLower().EndsWith(ext)))
+            this.Files = app.Files
+                ?.Where(f => PictureExts.Any(ext => f.ToLower().EndsWith(ext)))
                 ?.ToArray();
-            target = app.target;
-            if (target == null || files == null || files.Length == 0) { return; }
+            this.Target = app.Target;
+            if (Target == null || Files == null || Files.Length == 0) { return; }
 
-            index = Array.FindIndex(files, f => f.Equals(target));
-            index = index == -1 ? 0 : index;
-            load();
+            this.Index = Array.FindIndex(Files, f => f.Equals(Target));
+            this.Index = Index == -1 ? 0 : Index;
+            Load();
         }
 
-        private void load()
+        private void Load()
         {
-            this.image.Source = new BitmapImage(new Uri(files[index]));
+            this.image.Source = new BitmapImage(new Uri(Files[Index]));
         }
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key.Equals(Key.Right) || e.Key.Equals(Key.PageDown))
             {
-                index = index + 1 == files.Length ? 0 : index + 1;
-                load();
+                this.Index = Index + 1 == Files.Length ? 0 : Index + 1;
+                Load();
             }
             else if (e.Key.Equals(Key.Left) || e.Key.Equals(Key.PageUp)) {
-                index = index == 0 ? files.Length - 1 : index - 1;
-                load();
+                this.Index = Index == 0 ? Files.Length - 1 : Index - 1;
+                Load();
             }
         }
     }

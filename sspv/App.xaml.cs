@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
 
 namespace sspv
@@ -13,18 +7,18 @@ namespace sspv
 {
     public partial class App : Application
     {
-        public string[] files;
-        public string target;
+        public string[] Files;
+        public string Target;
 
         protected override void OnStartup(StartupEventArgs e)
         {
             if (e.Args.Length == 0) { return; }
-            target = e.Args[0];
-            var parentDirectory = IsDirectory(target)
-                ? target
-                : Directory.GetParent(target).FullName;
+            this.Target = e.Args[0];
+            var parentDirectory = IsDirectory(Target)
+                ? Target
+                : Directory.GetParent(Target).FullName;
 
-            files = Directory.GetFiles(parentDirectory);
+            this.Files = Directory.GetFiles(parentDirectory);
         }
 
         private static bool IsDirectory(string path)
