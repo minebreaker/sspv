@@ -64,7 +64,10 @@ namespace sspv
                 {
                     t.BeginInit();
                     t.Source = image;
-                    t.Transform = transform;
+                    if (transform != null)
+                    {
+                        t.Transform = transform;
+                    }
                     t.EndInit();
                 });
                 rotatedImage = transformation;
