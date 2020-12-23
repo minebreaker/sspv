@@ -6,6 +6,6 @@
         xmlns:local="clr-namespace:sspv"
         mc:Ignorable="d"
         Title="SSPV" WindowState="Maximized"
-        KeyDown="OnKeyDown">
+        KeyDown="OnKeyDown" Background="Black">
     <Image x:Name="image" Margin="0" />
 </Window>
