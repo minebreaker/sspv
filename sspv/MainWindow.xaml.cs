@@ -89,5 +89,22 @@ namespace sspv
                 this.Load();
             }
         }
+
+        private void OnStrechFill(object sender, RoutedEventArgs e)
+        {
+            this.image.Stretch = Stretch.Fill;
+        }
+        private void OnStrechNone(object sender, RoutedEventArgs e)
+        {
+            this.image.Stretch = Stretch.None;
+        }
+        private void OnStrechUniform(object sender, RoutedEventArgs e)
+        {
+            this.image.Stretch = Stretch.Uniform;
+        }
+        private void OnStrechUniformToFill(object sender, RoutedEventArgs e)
+        {
+            this.image.Stretch = Stretch.UniformToFill;
+        }
     }
 }

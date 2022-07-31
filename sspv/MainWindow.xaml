@@ -8,4 +8,14 @@
         Title="SSPV" WindowState="Maximized"
         KeyDown="OnKeyDown" Background="Black">
     <Image x:Name="image" Margin="0" />
+    <Window.ContextMenu>
+        <ContextMenu Name="contextMenu">
+            <MenuItem  Header="Strech">
+                <MenuItem Header="Fill" Click="OnStrechFill"/>
+                <MenuItem Header="None" Click="OnStrechNone"/>
+                <MenuItem Header="Uniform" Click="OnStrechUniform"/>
+                <MenuItem Header="UniformToFill" Click="OnStrechUniformToFill"/>
+            </MenuItem>
+        </ContextMenu>
+    </Window.ContextMenu>
 </Window>
